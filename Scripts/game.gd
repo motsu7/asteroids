@@ -36,7 +36,9 @@ func spawn_asteroid(pos, size, amount):
 		a.global_position = pos
 		a.size = size
 		a.connect("exploded", _on_asteroid_exploded)
-		asteroids.add_child(a)
+		# Note: line below yields errors, are fixed on the line below that
+		# asteroids.add_child(a)
+		asteroids.call_deferred("add_child", a)
 
 func restart_game():
 	get_tree().reload_current_scene()
