@@ -17,3 +17,5 @@ hframes = 4
 position = Vector2(0, 1)
 rotation = 1.22173
 shape = ExtResource("3_hiy81")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 # Note: the operator := is used for variable assigment, and also type inference
 @export var acceleration := 10.0
@@ -7,10 +7,14 @@ extends CharacterBody2D
 @export var fire_rate := 0.2
 @export var ship_slowdown := 2.0
 
+@onready var sprite = $Sprite2D
 @onready var muzzle = $Muzzle
 var laser_scene = preload("res://Scenes/laser.tscn")
 signal laser_shot(laser)
 
+signal died
+
+var alive = true
 var shoot_cooldown = false
 
 func _process(_delta):
@@ -57,3 +61,18 @@ func shoot_laser():
 	laser.global_position = muzzle.global_position
 	laser.rotation = rotation
 	emit_signal("laser_shot", laser)
+
+func die():
+	if alive == true:
+		alive = false
+		emit_signal("died")
+		sprite.visible = false
+		process_mode = Node.PROCESS_MODE_DISABLED
+
+func respawn(pos):
+	if !alive:
+		alive = true
+		global_position = pos
+		velocity = Vector2.ZERO
+		sprite.visible = true
+		process_mode = Node.PROCESS_MODE_INHERIT
