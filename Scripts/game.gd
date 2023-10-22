@@ -6,7 +6,7 @@ extends Node2D
 func _ready():
 	player.connect("laser_shot", _on_player_laser_shot)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("restart"):
 		restart_game()
 

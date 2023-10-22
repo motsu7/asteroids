@@ -14,5 +14,3 @@ position = Vector2(640, 360)
 
 [node name="Asteroid" parent="." instance=ExtResource("3_df4br")]
 position = Vector2(359, 424)
-
-[connection signal="laser_shot" from="Player" to="." method="_on_player_laser_shot"]

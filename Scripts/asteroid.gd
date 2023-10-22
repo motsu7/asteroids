@@ -20,26 +20,24 @@ func _ready():
 	match size:
 		AsteroidSize.LARGE:
 			speed = randf_range(50, 100)
-			sprite.animation.frame = 0
+			sprite.frame = 0
 			cshape.shape = preload("res://Resources/asteroid_cshape_large.tres")
 		AsteroidSize.MEDIUM:
 			speed = randf_range(100, 150)
-			sprite.animation.frame = 1
+			sprite.frame = 1
 			cshape.shape = preload("res://Resources/asteroid_cshape_medium.tres")
 		AsteroidSize.SMALL:
 			speed = randf_range(150, 200)
-			sprite.animation.frame = 2
+			sprite.frame = 2
 			cshape.shape = preload("res://Resources/asteroid_cshape_small.tres")
 		AsteroidSize.TINY:
 			speed = randf_range(200, 250)
-			sprite.animation.frame = 3
+			sprite.frame = 3
 			cshape.shape = preload("res://Resources/asteroid_cshape_tiny.tres")
 
 func _physics_process(delta):
 	global_position += movement_vector.rotated(rotation) * speed * delta
 	
-	var shape_size = sprite.height
-	print (sprite.height)
 	var screen_size := get_viewport_rect().size
 	if global_position.y < 0:
 		global_position.y = screen_size.y

@@ -13,7 +13,7 @@ signal laser_shot(laser)
 
 var shoot_cooldown = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("shoot"):
 		if !shoot_cooldown:
 			shoot_cooldown = true
