@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds4mpagtl5jnq"]
+
+[ext_resource type="Texture2D" uid="uid://cxa4d1frq6tki" path="res://Assets/Lunar Lander Upload/Space Background/Asteroids_Foreground.png" id="1_s2ahg"]
+[ext_resource type="Script" path="res://Scripts/asteroid.gd" id="1_u5fb3"]
+[ext_resource type="Shape2D" uid="uid://bwwk4ne0sss6p" path="res://Resources/asteroid_cshape_large.tres" id="3_hiy81"]
+
+[node name="Asteroid" type="Area2D"]
+script = ExtResource("1_u5fb3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s2ahg")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.22173
+shape = ExtResource("3_hiy81")

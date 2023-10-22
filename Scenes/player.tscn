@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://uhwj2t0dkybh"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ghgjc"]
+[ext_resource type="Texture2D" uid="uid://culpnkm2stcmn" path="res://Assets/Lunar Lander Upload/Ships/Spaceships.png" id="1_w8s4u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vyfdo"]
+radius = 15.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ghgjc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_w8s4u")
+hframes = 5
+vframes = 3
+frame = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vyfdo")
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(0, -15)
