@@ -1,4 +1,6 @@
-extends Area2D
+class_name Asteroid extends Area2D
+
+signal exploded(pos, size)
 
 var movement_vector := Vector2(0, -1)
 
@@ -9,8 +11,6 @@ var speed := 50.0
 
 @onready var sprite = $Sprite2D
 @onready var cshape = $CollisionShape2D
-
-# https://www.youtube.com/watch?v=FmIo8iBV1W8&t=2893s&pp=ygUPZ29kb3QgYXN0ZXJvaWRz
 
 func _ready():
 	# Note: picks a random rotation, 2 * PI = full circle
@@ -47,3 +47,7 @@ func _physics_process(delta):
 		global_position.x = screen_size.x
 	elif global_position.x > screen_size.x:
 		global_position.x = 0
+
+func explode():
+	emit_signal("exploded", global_position, size)
+	queue_free()
